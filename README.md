@@ -57,6 +57,7 @@
 - `$ uv add -U openai-whisper`
 - `$ uv add soundfile numpy`
 - `$ uv add hatchling editables wheel`
+- `$ uv add --group flash-attn flash-attn --no-build-isolation --verbose`
 
 ## 参考
 - uvでflash-attentionをinstallする
