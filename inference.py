@@ -10,8 +10,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 processor = WhisperProcessor.from_pretrained(model_id)
 model = WhisperForConditionalGeneration.from_pretrained(
     model_id,
-    #torch_dtype=torch.float16,  # 半精度で読み込み
-    #low_cpu_mem_usage=True      # 低メモリモードを有効化
+    torch_dtype=torch.float16,
 ).to(device)
 
 # 音声ファイルの読み込み
