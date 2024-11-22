@@ -19,7 +19,7 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 #device = "cpu"
 
 model_kwargs = {"attn_implementation": "flash_attention_2"} if torch.cuda.is_available() else {}
-#model_kwargs = {"attn_implementation": "sdpa"} if torch.cuda.is_available() else {}
+#model_kwargs = {"attn_implementation": "sdpa"}
 #model_kwargs = {}
 
 generate_kwargs = {"language": "japanese", "task": "transcribe"}
