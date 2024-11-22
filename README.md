@@ -31,20 +31,23 @@
 - Windows
   - まず7-Zipをインストール
     - https://7-zip.opensource.jp/
-  - ここが分かりやすいです（今のバージョンは7ですが）
+  - ffmpegのインストールはここが分かりやすいです
     - https://www.kkaneko.jp/tools/win/ffmpeg.html
+    - ちなみに今のバージョンは6じゃなくて7
 - Mac
   - `$ brew install ffmpeg`
 
 ## プロジェクトセットアップ
 - Windows
-  - `$ uv sync --group torch`
-  - `$ uv sync --group torch --group flash-attn`
+  - 以下を順番に実行
+  1. `$ uv sync --group torch`
+  2. `$ uv sync --group torch --group flash-attn`
+    - flash-attnのインストールに数時間かかります
 - Mac
-  - Macにインストールする場合はcuda用にビルドしたtorchもflash-attnも必要ないので `[dependency-groups]` より下を全てコメントアウトする
-  - `$ uv sync`
+  1. Macにインストールする場合はcuda用にビルドしたtorchもflash-attnも必要ないので `[dependency-groups]` より下を全てコメントアウトする
+  2. `$ uv sync`
 
-### メモ: pyproject.toml 作成手順
+## メモ: pyproject.toml 作成手順
 
 - 下記を参考に pyproject.toml に torch の依存を書く。ただし dependency-groups を分ける
   - https://zenn.dev/yashikota/articles/45b4892d6acb10
@@ -55,6 +58,6 @@
 - `$ uv add soundfile numpy`
 - `$ uv add hatchling editables wheel`
 
-### 参考
+## 参考
 - uvでflash-attentionをinstallする
   https://zenn.dev/colum2131/articles/342b7bdb20c54e
