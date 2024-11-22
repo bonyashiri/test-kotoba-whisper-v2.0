@@ -18,6 +18,8 @@ dependencies = [
     "wheel>=0.45.0",
 ]
 
+### Windowsにインストールする場合はこれより下を全てコメントアウトしてください
+
 [dependency-groups]
 torch = [
     "torch==2.5.1+cu124",

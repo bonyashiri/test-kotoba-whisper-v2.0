@@ -1,12 +1,10 @@
 # test-kotoba-whisper-v2.0
 
-## Windowsでのセットアップ
-
-### GPUの使用に必要な諸々のツールをインストール
+## GPUの使用に必要な諸々のツールをインストール（Windowsのみ）
 
 - 参考 https://note.com/hcanadli12345/n/nb8cf59ca2596
   - NVIDIAドライバの最新版, Build Tools for Visual Studio, CUDA Toolkit, cuDNN をインストール
-  - （重要！）ただしCUDA Toolkit は、PyTorch が対応しているバージョンが限られるため現在の最新対応バージョン 12.4 系をインストールしましょう
+  - （重要！）ただしCUDA Toolkit は、PyTorch が対応しているバージョンが限られるため、対応している中での現在の最新バージョン 12.4 系をインストールしましょう
   - CUDA Toolkit の過去バージョンはここにあります
     - https://developer.nvidia.com/cuda-toolkit-archive
   - 参考: PyTorch のCUDA対応バージョン https://pytorch.org/get-started/locally/#start-locally
@@ -16,18 +14,35 @@
   - `/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.4/bin`
   - `/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.4/libnvvp`
 
-### uvのインストール
+## uvのインストール
 
-- コマンドプロンプトで以下を実行
-  - `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.5.2/install.ps1 | iex"`
-- （ぼんやはgit bashを使っているので）.bash_profile に下記を追記
-  - `export PATH="${PATH}:${HOME}/.local/bin"`
-- python3.12をインストール
-  - `$ uv python install cpython-3.12`
+- Windows
+  - コマンドプロンプトで以下を実行
+    - `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/0.5.2/install.ps1 | iex"`
+  - （ぼんやはgit bashを使っているので）.bash_profile に下記を追記
+    - `export PATH="${PATH}:${HOME}/.local/bin"`
+  - python3.12をインストール
+    - `$ uv python install cpython-3.12`
+- Mac
+  - `$ brew install uv`
 
-### セットアップ
-- `$ uv sync --group torch`
-- `$ uv sync --group torch --group flash-attn`
+## ffmpegのインストール
+
+- Windows
+  - まず7-Zipをインストール
+    - https://7-zip.opensource.jp/
+  - ここが分かりやすいです（今のバージョンは7ですが）
+    - https://www.kkaneko.jp/tools/win/ffmpeg.html
+- Mac
+  - `$ brew install ffmpeg`
+
+## プロジェクトセットアップ
+- Windows
+  - `$ uv sync --group torch`
+  - `$ uv sync --group torch --group flash-attn`
+- Mac
+  - Macにインストールする場合はcuda用にビルドしたtorchもflash-attnも必要ないので `[dependency-groups]` より下を全てコメントアウトする
+  - `$ uv sync`
 
 ### メモ: pyproject.toml 作成手順
 
@@ -43,4 +58,3 @@
 ### 参考
 - uvでflash-attentionをinstallする
   https://zenn.dev/colum2131/articles/342b7bdb20c54e
-
