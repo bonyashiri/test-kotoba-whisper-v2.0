@@ -38,6 +38,7 @@
   - `$ brew install ffmpeg`
 
 ## プロジェクトセットアップ
+
 - Windows
   - 以下を順番に実行
   1. `$ uv sync --group torch`
@@ -46,6 +47,10 @@
 - Mac
   1. Macにインストールする場合はcuda用にビルドしたtorchもflash-attnも必要ないので `[dependency-groups]` より下を全てコメントアウトする
   2. `$ uv sync`
+
+## 推論実行
+
+- `$ uv run inference_pipeline.py`
 
 ## メモ: pyproject.toml 作成手順
 
